@@ -14,7 +14,6 @@ public class RequestServer extends Thread {
 
 	private final String IN_LINE_OK = "HTTP/1.1 200 OK";
 	private final String IN_LINE_ERROR = "HTTP/1.1 404 Not Found";
-	private final String HEADER = "Content-Type:text/html;charset:UTF-8";
 
 	private Socket socket;
 	private String addr;
@@ -45,7 +44,7 @@ public class RequestServer extends Thread {
 			BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			PrintWriter pw = new PrintWriter(socket.getOutputStream(), true);// true -> autoflush
 
-			// take url and we show the page correspontent
+			// take url and we show the page correspondent
 			String connection = br.readLine();
 			connection = connection.trim();
 
@@ -62,12 +61,12 @@ public class RequestServer extends Thread {
 				if (page.length() == 0 || page.equals("/")) {
 
 					html = Pages.indexHtml(addr);
-					Utils.showPage(IN_LINE_OK, HEADER, html, pw);
+					Utils.showPage(IN_LINE_OK, html, pw);
 
 				} else if (page.equals("/dni")) {
 
 					html = Pages.dniHtml(addr);
-					Utils.showPage(IN_LINE_OK, HEADER, html, pw);
+					Utils.showPage(IN_LINE_OK, html, pw);
 
 				} else if (page.contains("/dni=")) {
 
@@ -77,20 +76,20 @@ public class RequestServer extends Thread {
 					if (correctDni) {
 
 						html = Pages.dniCompHtml(calculateDNI(number), addr);
-						Utils.showPage(IN_LINE_OK, HEADER, html, pw);
+						Utils.showPage(IN_LINE_OK, html, pw);
 
 					} else {
 
 						html = Pages.errorDniHtml(addr);
-						Utils.showPage(IN_LINE_ERROR, HEADER, html, pw);
+						Utils.showPage(IN_LINE_ERROR, html, pw);
 
 					}
 
 				} else {
 
-					html = Pages.errorHtml();
-					Utils.showPage(IN_LINE_ERROR, HEADER, html, pw);
-					
+					html = Pages.errorHtml(addr);
+					Utils.showPage(IN_LINE_ERROR, html, pw);
+
 				}
 
 			}
