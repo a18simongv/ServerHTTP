@@ -8,6 +8,11 @@ public class ServerHttp {
 
 	public static void main (String[] args) {
 		
+		execution();
+		
+	}
+	
+	public static void execution() {
 		ServerSocket server = null;
 		Socket socket = null;
 		
@@ -28,8 +33,6 @@ public class ServerHttp {
 
 			e.printStackTrace();
 		}
-		
-		
 	}
 	
 }
