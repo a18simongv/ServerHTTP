@@ -46,7 +46,7 @@ public class Pages {
 	public static String errorHtml(String addrs) {
 		String html = "";
 
-		html = header() + "<body>" + "<h1>&#33;ERROR! Page didn't found</h1>"
+		html = header() + "<body>" + "<h1>ERROR! Page didn't found</h1>"
 				+ "<p>The url you wrote isn't in our server</p>" + "<p><a href='http://" + addrs + ":" + port
 				+ "/'>Go back</a></p>" + "</body>";
 
@@ -56,7 +56,7 @@ public class Pages {
 	public static String errorDniHtml(String addrs) {
 		String html = "";
 
-		html = header() + "<body>" + "<h1>&#33;ERROR! DNI didn't valid</h1>" + "<p><a href='http://" + addrs + ":"
+		html = header() + "<body>" + "<h1>ERROR! DNI didn't valid</h1>" + "<p><a href='http://" + addrs + ":"
 				+ port + "/'>Go back</a></p>" + "</body>";
 
 		return html;

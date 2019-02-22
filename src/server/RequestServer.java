@@ -43,7 +43,7 @@ public class RequestServer extends Thread {
 			// take stream of socket received
 			BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			PrintWriter pw = new PrintWriter(socket.getOutputStream(), true);// true -> autoflush
-
+			
 			// take url and we show the page correspondent
 			String connection = br.readLine();
 			connection = connection.trim();
@@ -93,6 +93,9 @@ public class RequestServer extends Thread {
 				}
 
 			}
+			
+			pw.close();
+			br.close();
 
 		} catch (Exception e) {
 			e.printStackTrace();

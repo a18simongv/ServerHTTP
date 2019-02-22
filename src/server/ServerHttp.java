@@ -14,14 +14,13 @@ public class ServerHttp {
 
 	public static void execution() {
 		ServerSocket server = null;
-		Socket socket = null;
 
 		try {
 
 			server = new ServerSocket(8090);
 			// server accepts the client petition and manages it
 			while (true) {
-				socket = server.accept();
+				Socket socket = server.accept();
 				RequestServer request = new RequestServer(socket);
 				request.start();
 			}
